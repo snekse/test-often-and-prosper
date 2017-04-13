@@ -1,0 +1,45 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+//noinspection GroovyUnusedAssignment
+sourceCompatibility = 1.8
+
+repositories {
+	jcenter()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-data-rest')
+	compile('org.springframework.data:spring-data-rest-hal-browser')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	runtime('org.springframework.boot:spring-boot-devtools')
+	runtime('com.h2database:h2')
+
+	def spockVersion = '1.1-groovy-2.4-rc-4'
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
+	testCompile("org.spockframework:spock-core:$spockVersion")
+	testCompile("org.spockframework:spock-spring:$spockVersion")
+	testCompile("com.blogspot.toomuchcoding:spock-subjects-collaborators-extension:1.2.1")
+	// needed for mocking in Spock
+	testCompile("cglib:cglib-nodep:2.2")
+}
