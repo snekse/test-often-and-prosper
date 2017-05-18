@@ -1,3 +1,6 @@
+//Giving Mockito a fighting chance
+ext['mockito.version'] = '2.7.22'
+
 buildscript {
 	ext {
 		springBootVersion = '1.5.2.RELEASE'
